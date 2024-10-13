@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "flightservice",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mdparvej01/flight-service.git"
+  },
+  "author": "mohammad parvej",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mdparvej01/flight-service/issues"
+  },
+  "homepage": "https://github.com/Mdparvej01/flight-service#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "http-status-codes": "^2.3.0",
+    "winston": "^3.15.0"
+  }
+}
