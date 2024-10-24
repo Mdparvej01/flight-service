@@ -1,6 +1,7 @@
 const { FlightService } = require('../services');
 
 const {StatusCodes } = require('http-status-codes');
+// const { updateSeats } = require('../services/flight-service');
 
 
 
@@ -69,7 +70,67 @@ async function getAllFlights (req,res) {
     }
 }
 
+// post/flights/:id
+
+async function getFlight (req,res) {
+    // console.log("req q=>" , req.query);
+    try {
+    const flight = await FlightService.getFlight(req.params.id);
+    // console.log("idd req prm =>",req,params.id);
+
+    return res 
+             .status(200)
+             .json({
+                success:true,
+                flight
+             })
+    } catch (error){
+     return res
+             .status(400)
+             .json({
+                 success:false,
+                 error
+             })
+    }
+}
+
+
+
+async function updateSeats(req,res) {
+    try {
+        
+        const response = await FlightService.updateSeats({
+            flightId:req.params.id,
+            seats:req.body.seats,
+            dec:req.body.dec
+        });
+
+        return res
+               .status(200)
+               .json({
+                success:true,
+                response
+               })
+
+
+
+    } catch(error){
+
+        return res
+               .status(200)
+               .json({
+                success:false,
+                error
+               })
+
+    }
+}
+
+
+
 module.exports = {
     createFlight,
-    getAllFlights
+    getAllFlights,
+    getFlight,
+    updateSeats
 }
